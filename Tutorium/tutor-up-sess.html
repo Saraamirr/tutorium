@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Tutoring</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link th:href="@{/css/homepage.css}" rel="stylesheet"/>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha384-..."
+          crossorigin="anonymous">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <style>
+        .container {
+            margin-top: 30px;
+        }
+
+        .btn-primary {
+            margin-left: 42.5%;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        footer {
+            background-color: #f9f9f9;
+            padding: 20px 0;
+            position: relative;
+            padding-top: 50px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1 1 300px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h2 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .footer-section p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .contact-info p {
+            margin-bottom: 5px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin-right: 10px;
+            color: #555;
+            font-size: 18px;
+        }
+
+        .footer-bottom {
+            background-color: #ddd;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #555;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .hosted-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .hosted-text {
+            display: none;
+            font-size: 14px;
+            color: #333;
+            margin-left: 8px;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="banner">
+    <div class="nav">
+        <img th:src="@{/img/logo.jpg}" class="logo">
+
+        <ul>
+
+            <li><a href="#">About us</a></li>
+
+            <li><a href=>Settings</a>
+                <div class="accounts">
+                    <ul>
+                        <li><a href="home.html">Logout</a></li>
+                        <li><a href=";"> Delete account</a></li>
+
+
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <h2>Upcoming Sessions</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Subject</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Duration</th>
+                <th>Cost</th>
+                <th>Session Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="sessionRequest : ${sessionRequests}">
+                <th><span
+                        th:text="${sessionRequest.getStudent().firstName + ' ' + sessionRequest.getStudent().lastName}"></span>
+                </th>
+                <th><span th:text="${sessionRequest.getSubject()}"></span></th>
+                <th><span th:text="${sessionRequest.getRequestedDateTime().toLocalDate()}"></span></th>
+                <th><span th:text="${sessionRequest.getRequestedDateTime().toLocalTime()}"></span></th>
+                <th><span th:text="${sessionRequest.getSessionHours()}"></span></th>
+                <th><span th:text="${sessionRequest.getCost()}"></span></th>
+                <td><button class="hosted-btn" th:onclick="|window.location.href='/teachers/host-session/' + ${sessionRequest.getTeacher().getId()} + '/' + ${sessionRequest.getId()}|">Hosted</button><span class="hosted-text">Hosted!</span></td>
+
+            </tr>
+            <tr>
+            </tbody>
+        </table>
+        <br>
+        <a th:href="'/teachers/request-list/' + ${teacher.getId()}" class="btn btn-primary"> Request List</a> <br> <br>
+    </div>
+</div>
+<footer>
+    <div class="footer-content">
+        <div class="footer-section about">
+            <h2>Tutorium</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada enim sed leo rutrum, eget
+                sagittis mauris fringilla.</p>
+        </div>
+        <div class="footer-section contact">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <p><i class="fa fa-phone"></i> +1 123 456 7890</p>
+                <p><i class="fa fa-envelope"></i> info@example.com</p>
+            </div>
+        </div>
+        <div class="footer-section social">
+            <h2>Follow Us</h2>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2023 Tutorium. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+
+</html> 

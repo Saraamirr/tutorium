@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tutoring</title>        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link th:href="@{/css/homepage.css}" rel="stylesheet"/>
+   <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    p {
+        margin-bottom: 10px;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <div class="banner">
+<div class="nav">
+    <img th:src="@{/img/logo.jpg}" class="logo">
+
+    <ul>
+     
+
+        <li><a href="\">Create a new account</a> 
+            <div class="accounts">
+            <ul>
+                <li><a href="/students/register"> Student</a></li>
+                <li><a href="/teachers/register">Tutor</a></li>
+            </ul>
+        </div>
+    </li> 
+       <li><a href=>Login as a</a>
+        <div class="accounts">
+            <ul>
+                <li><a href="/students/login"> Student</a></li>
+                <li><a href="/teachers/login">Tutor</a></li>
+            </ul>
+        </div>
+    
+    </li> 
+       <li><a href="#">Contact us</a></li>
+       
+
+
+    </ul>
+</div>
+
+<body>
+    <div class="container">
+        <!--AFTER TUTOR REGISTER-->
+        <h2>Application Pending...</h2>
+        <p>Your application is currently on hold or pending review. Please check back at any time.</p>
+        <!--lesa hanzbot de mel controller-->
+        <button onclick="window.location.href = '/teachers/home'">Home</button>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+          <div class="footer-section about">
+            <h2>Tutorium</h2>
+  <p>
+    Unlock your potential
+  </p>        </div>
+          <div class="footer-section contact">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+              <p><i class="fa fa-phone"></i> +1 123 456 7890</p>
+              <p><i class="fa fa-envelope"></i> info@example.com</p>
+            </div>
+          </div>
+          <div class="footer-section social">
+            <h2>Follow Us</h2>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2023 Tutorium. All rights reserved.</p>
+        </div>
+      </footer>
+      
+</body>
+</html>

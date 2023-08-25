@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tutoring</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link th:href="@{/css/homepage.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha384-..."
+          crossorigin="anonymous">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table th,
+        table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        button {
+            background-color: #2b7abf;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-left: 42.5%;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        footer {
+            background-color: #f9f9f9;
+            padding: 20px 0;
+            position: relative;
+            padding-top: 50px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1 1 300px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h2 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .footer-section p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .contact-info p {
+            margin-bottom: 5px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin-right: 10px;
+            color: #555;
+            font-size: 18px;
+        }
+
+        .footer-bottom {
+            background-color: #ddd;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #555;
+            font-size: 14px;
+            margin: 0;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="banner">
+    <div class="nav">
+        <img th:src="@{/img/logo.jpg}" class="logo">
+
+        <ul>
+
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+
+            <li><a href=>Settings</a>
+                <div class="accounts">
+                    <ul>
+                        <li><a href="../../../../../../../Downloads/website(2)/home.html">Logout</a></li>
+                        <li><a href=";"> Delete account</a></li>
+
+                    </ul>
+                </div>
+
+
+        </ul>
+    </div>
+    <!--SESSIONS GET DELETED AS SOON AS DATE PASSES-->
+    <!--SESSIONS GET UPLOADED RIGHT AFTER MAKING PAYMENT-->
+
+    </head>
+    <body>
+    <div class="container">
+        <h2>Student Schedule</h2>
+
+        <table>
+            <tr>
+                <th>Tutor Name</th>
+                <th>Subject</th>
+                <th>Date</th>
+                <th>Duration</th>
+                <th>Session Status</th>
+            </tr>
+            <tr th:each="sessionRequest : ${sessionRequests}">
+                <th><span
+                        th:text="${sessionRequest.getStudent().firstName + ' ' + sessionRequest.getStudent().lastName}"></span>
+                </th>
+                <th><span th:text="${sessionRequest.getSubject()}"></span></th>
+                <th><span th:text="${sessionRequest.getRequestedDateTime().toLocalDate()}"></span></th>
+                <th><span th:text="${sessionRequest.getRequestedDateTime().toLocalTime()}"></span></th>
+                <th><span th:text="${sessionRequest.getSessionHours()}"></span></th>
+                <td><button class="hosted-btn" th:onclick="|window.location.href='/teachers/host-session/' + ${sessionRequest.getTeacher().getId()} + '/' + ${sessionRequest.getId()}|">Hosted</button><span class="hosted-text">Completed!</span></td>
+
+            </tr>
+        </table>
+
+
+        <button onclick="window.location.href = 'requests.html'">View requests</button>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h2>Tutorium</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada enim sed leo rutrum, eget
+                    sagittis mauris fringilla.</p>
+            </div>
+            <div class="footer-section contact">
+                <h2>Contact Us</h2>
+                <div class="contact-info">
+                    <p><i class="fa fa-phone"></i> +1 123 456 7890</p>
+                    <p><i class="fa fa-envelope"></i> info@example.com</p>
+                </div>
+            </div>
+            <div class="footer-section social">
+                <h2>Follow Us</h2>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Tutorium. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    </body>
+</html>
